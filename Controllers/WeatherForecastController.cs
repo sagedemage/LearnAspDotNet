@@ -19,9 +19,11 @@ namespace LearnAspDotNet.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public string[] Get()
+        public JsonResult Get()
         {
-            return Summaries;
+            var data = new { msg = "Success", auth = true };
+            var json = new JsonResult(data);
+            return json;
         }
     }
 }
