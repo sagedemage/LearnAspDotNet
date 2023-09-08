@@ -36,5 +36,14 @@ namespace LearnAspDotNet.Controllers
             var json = new JsonResult(data);
             return json;
         }
+
+        [HttpDelete(Name = "DeleteWeatherForecast")]
+        public JsonResult Delete(long id)
+        {
+            /* DELETE */
+            var data = new { id = id, status = "Success", message = "Deleted weather forecast" };
+            var json = new JsonResult(data);
+            return json;
+        }
     }
 }
