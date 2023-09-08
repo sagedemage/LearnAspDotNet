@@ -1,6 +1,6 @@
 ﻿namespace LearnAspDotNet.Models
 {
-    public class WeatherBody
+    public class Weather
     {
         public int id {  get; set; }
         public string? Status { get; set; }
