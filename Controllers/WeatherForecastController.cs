@@ -20,7 +20,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         [HttpPost(Name = "PostWeatherForecast")]
-        public JsonResult Post(WeatherBody weatherBody)
+        public JsonResult Post(Weather weatherBody)
         {
             /* CREATE */
             var data = new { status = weatherBody.Status, message = weatherBody.Message };
@@ -38,7 +38,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         [HttpPatch(Name = "PatchWeatherForecast")]
-        public JsonResult Patch(WeatherBody weatherBody)
+        public JsonResult Patch(Weather weatherBody)
         {
             /* UPDATE */
             var weather_data = new { id = weatherBody.id, status = weatherBody.Status, message = weatherBody.Message };
