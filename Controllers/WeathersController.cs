@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LearnAspDotNet.Data;
 using LearnAspDotNet.Models;
+using System.Diagnostics;
 
 namespace LearnAspDotNet.Controllers
 {
@@ -21,6 +22,7 @@ namespace LearnAspDotNet.Controllers
 
         // GET: Weathers
         [Route("Weathers")]
+        [Route("Weathers/Index")]
         public async Task<IActionResult> Index()
         {
               return _context.Weather != null ? 
@@ -58,9 +60,9 @@ namespace LearnAspDotNet.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [Route("Weathers/Create")]
-        public async Task<IActionResult> Create([Bind("Status,Message")] Weather weather)
+        [Consumes("application/json")]
+        public async Task<IActionResult> Create([FromBody] Weather weather)
         {
             if (ModelState.IsValid)
             {
