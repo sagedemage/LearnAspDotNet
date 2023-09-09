@@ -146,8 +146,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // POST: Weathers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpDelete]
         [Route("Weathers/Delete/{id?}")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
