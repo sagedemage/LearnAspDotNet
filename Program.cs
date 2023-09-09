@@ -15,6 +15,8 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
+app.UseHttpsRedirection();
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
