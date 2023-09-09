@@ -20,6 +20,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers
+        [Route("Weathers")]
         public async Task<IActionResult> Index()
         {
               return _context.Weather != null ? 
@@ -28,6 +29,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers/Details/5
+        [Route("Weathers/Details/{id?}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Weather == null)
@@ -46,6 +48,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers/Create
+        [Route("Weathers/Create")]
         public IActionResult Create()
         {
             return View();
@@ -56,7 +59,8 @@ namespace LearnAspDotNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Status,Message")] Weather weather)
+        [Route("Weathers/Create")]
+        public async Task<IActionResult> Create([Bind("Status,Message")] Weather weather)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +72,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers/Edit/5
+        [Route("Weathers/Edit/{id?}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Weather == null)
@@ -88,6 +93,7 @@ namespace LearnAspDotNet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("Weathers/Edit/{id?}")]
         public async Task<IActionResult> Edit(int id, [Bind("id,Status,Message")] Weather weather)
         {
             if (id != weather.id)
@@ -119,6 +125,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers/Delete/5
+        [Route("Weathers/Delete/{id?}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Weather == null)
@@ -139,6 +146,7 @@ namespace LearnAspDotNet.Controllers
         // POST: Weathers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route("Weathers/Delete/{id?}")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Weather == null)
