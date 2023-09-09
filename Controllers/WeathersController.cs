@@ -74,6 +74,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers/Edit/5
+        [HttpGet]
         [Route("Weathers/Edit/{id?}")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -93,16 +94,11 @@ namespace LearnAspDotNet.Controllers
         // POST: Weathers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Route("Weathers/Edit/{id?}")]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Status,Message")] Weather weather)
+        [HttpPatch]
+        [Route("Weathers/Update")]
+        [Consumes("application/json")]
+        public async Task<IActionResult> Edit([FromBody] Weather weather)
         {
-            if (id != weather.id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
