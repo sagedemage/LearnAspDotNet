@@ -97,7 +97,7 @@ namespace LearnAspDotNet.Controllers
         [HttpPatch]
         [Route("Weathers/Update")]
         [Consumes("application/json")]
-        public async Task<IActionResult> Edit([FromBody] Weather weather)
+        public async Task<IActionResult> Update([FromBody] Weather weather)
         {
             if (ModelState.IsValid)
             {
