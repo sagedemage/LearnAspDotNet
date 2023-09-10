@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LearnAspDotNet.Data;
 using LearnAspDotNet.Models;
 using System.Diagnostics;
+using System.Text.Json.Nodes;
 
 namespace LearnAspDotNet.Controllers
 {
@@ -72,6 +73,28 @@ namespace LearnAspDotNet.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(weather);
+        }
+
+        [HttpGet]
+        [Route("Weathers/Fetch/{id?}")]
+        public async Task<JsonResult> Fetch(int? id)
+        {
+            if (id == null || _context.Weather == null)
+            {
+                var body = new { msg = "The ID is null" };
+
+                return new JsonResult(body);
+            }
+
+            var weather = await _context.Weather.FindAsync(id);
+            if (weather == null)
+            {
+                var body = new { msg = "Weather does not exist" };
+
+                return new JsonResult(body);
+            }
+
+            return new JsonResult(weather);
         }
 
         // GET: Weathers/Edit/5
