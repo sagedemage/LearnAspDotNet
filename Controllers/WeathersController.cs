@@ -70,14 +70,15 @@ namespace LearnAspDotNet.Controllers
             {
                 _context.Add(weather);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var body = new { status = "Sucess", msg = "Created weather entry!" };
+                return new JsonResult(body);
             }
             return View(weather);
         }
 
         [HttpGet]
         [Route("Weathers/Fetch/{id?}")]
-        public async Task<JsonResult> Fetch(int? id)
+        public async Task<IActionResult> Fetch(int? id)
         {
             if (id == null || _context.Weather == null)
             {
