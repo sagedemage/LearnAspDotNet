@@ -142,7 +142,7 @@ namespace LearnAspDotNet.Controllers
                         throw;
                     }
                 }
-                var body = new { status = "Sucess", msg = "Updated weather entry!" };
+                var body = new { status = "Sucess", msg = "Updated the weather entry!" };
                 return new JsonResult(body);
             }
             return View(weather);
@@ -183,7 +183,10 @@ namespace LearnAspDotNet.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            var body = new { status = "Success", msg = "Deleted the weather entry!" };
+
+            return new JsonResult(body);
         }
 
         private bool WeatherExists(int id)
