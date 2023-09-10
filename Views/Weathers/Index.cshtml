@@ -56,14 +56,18 @@
     }
 
     async function createWeather() {
-        const data = {"Status": "Cold", "Message": "It is cold outside"}
-        const response = await fetch("Weathers/Create", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        window.location.reload()
+        let status = prompt("What is the status of the Weather?")
+        let message = prompt("Provide the message of the Weather.")
+        if (status !== null && message !== null) {
+            const data = { "Status": status, "Message": message }
+            const response = await fetch("Weathers/Create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            window.location.reload()
+        }
     }
 </script>
