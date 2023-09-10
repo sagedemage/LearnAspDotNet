@@ -33,9 +33,25 @@
             <td>
                 <button asp-action="Edit" asp-route-id="@item.id">Edit</button>
                 <button asp-action="Details" asp-route-id="@item.id">Details</button>
-                <button asp-action="Delete" asp-route-id="@item.id">Delete</button>
+                <button asp-action="Delete" onclick="deleteWeather(@item.id)" asp-route-id="@item.id">Delete</button>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<script>
+    async function deleteWeather(id) {
+        // http://localhost:5019/Weathers/Delete?id=1002
+        const delete_weather = confirm("Do you want to delete the weather entry?")
+        if (delete_weather) {
+            const response = await fetch("/Weathers/Delete?id=" + id, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "applications/json",
+                }
+            })
+            window.location.reload()
+        }
+    }
+</script>
