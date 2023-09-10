@@ -31,8 +31,7 @@
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
             <td>
-                <button asp-action="Edit" asp-route-id="@item.id">Edit</button>
-                <button asp-action="Details" asp-route-id="@item.id">Details</button>
+                <button asp-action="Edit" onclick="updateWeather(@item.id)" asp-route-id="@item.id">Edit</button>
                 <button asp-action="Delete" onclick="deleteWeather(@item.id)" asp-route-id="@item.id">Delete</button>
             </td>
         </tr>
@@ -62,6 +61,23 @@
             const data = { "Status": status, "Message": message }
             const response = await fetch("Weathers/Create", {
                 method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            window.location.reload()
+        }
+    }
+
+    async function updateWeather(id) {
+        console.log(id)
+        let status = prompt("What is the status of the Weather?")
+        let message = prompt("Provide the message of the Weather.")
+        if (status !== null && message !== null) {
+            const data = { "Id": id, "Status": status, "Message": message }
+            const response = await fetch("Weathers/Update", {
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
