@@ -116,7 +116,7 @@ namespace LearnAspDotNet.Controllers
             return View(weather);
         }
 
-        // POST: Weathers/Edit/5
+        // PATCH: Weathers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPatch]
@@ -142,7 +142,8 @@ namespace LearnAspDotNet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                var body = new { status = "Sucess", msg = "Updated weather entry!" };
+                return new JsonResult(body);
             }
             return View(weather);
         }
