@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <button asp-action="Create">Create New</button>
+    <button asp-action="Create" onclick="createWeather()">Create New</button>
 </p>
 <table class="table">
     <thead>
@@ -48,10 +48,22 @@
             const response = await fetch("/Weathers/Delete?id=" + id, {
                 method: "DELETE",
                 headers: {
-                    "Content-Type": "applications/json",
+                    "Content-Type": "application/json",
                 }
             })
             window.location.reload()
         }
+    }
+
+    async function createWeather() {
+        const data = {"Status": "Cold", "Message": "It is cold outside"}
+        const response = await fetch("Weathers/Create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        window.location.reload()
     }
 </script>

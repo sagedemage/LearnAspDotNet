@@ -50,7 +50,7 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers/Create
-        [Route("Weathers/Create")]
+        [Route("Weathers/Create1")]
         public IActionResult Create()
         {
             return View();
