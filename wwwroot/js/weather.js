@@ -15,15 +15,17 @@ async function createWeather() {
     let status = prompt("What is the status of the Weather?")
     let message = prompt("Provide the message of the Weather.")
     if (status !== null && message !== null) {
-        const data = { "Status": status, "Message": message }
-        const response = await fetch("Weathers/Create", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
+        axios.post("Weathers/Create", {
+            "Status": status,
+            "Message": message
         })
-        window.location.reload()
+            .then(function (response) {
+                console.log(response)
+                window.location.reload()
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
     }
 }
 
@@ -39,10 +41,10 @@ async function updateWeather(id) {
     let message = prompt("Provide the message of the Weather.", weather.message)
     if (status !== null && message !== null) {
         axios.patch("Weathers/Update", {
-                "Id": id,
-                "Status": status,
-                "Message": message
-            })
+            "Id": id,
+            "Status": status,
+            "Message": message
+        })
             .then(function (response) {
                 console.log(response)
                 window.location.reload()
