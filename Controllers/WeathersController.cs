@@ -23,7 +23,6 @@ namespace LearnAspDotNet.Controllers
 
         // GET: Weathers
         [Route("Weathers")]
-        [Route("Weathers/Index")]
         public async Task<IActionResult> Index()
         {
               return _context.Weather != null ? 
