@@ -43,14 +43,17 @@ async function updateWeather(id) {
     let status = prompt("What is the status of the Weather?", weather.status)
     let message = prompt("Provide the message of the Weather.", weather.message)
     if (status !== null && message !== null) {
-        const data = { "Id": id, "Status": status, "Message": message }
-        const response = await fetch("Weathers/Update", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        window.location.reload()
+        axios.patch("Weathers/Update", {
+                "Id": id,
+                "Status": status,
+                "Message": message
+            })
+            .then(function (response) {
+                console.log(response)
+                window.location.reload()
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
     }
 }
