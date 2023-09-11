@@ -39,7 +39,6 @@ async function fetchWeather(id) {
 }
 
 async function updateWeather(id) {
-    console.log(id)
     const weather = await fetchWeather(id)
     let status = prompt("What is the status of the Weather?", weather.status)
     let message = prompt("Provide the message of the Weather.", weather.message)
