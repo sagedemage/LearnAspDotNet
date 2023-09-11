@@ -28,14 +28,9 @@ async function createWeather() {
 }
 
 async function fetchWeather(id) {
-    const response = await fetch("Weathers/Fetch?id=" + id, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-    })
+    const response = await axios.get("Weathers/Fetch?id=" + id)
 
-    return response.json()
+    return response.data
 }
 
 async function updateWeather(id) {
