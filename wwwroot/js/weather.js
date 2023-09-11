@@ -1,13 +1,14 @@
 async function deleteWeather(id) {
     const delete_weather = confirm("Do you want to delete this weather entry?")
     if (delete_weather) {
-        const response = await fetch("/Weathers/Delete?id=" + id, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-        window.location.reload()
+        axios.delete("Weathers/Delete?id=" + id)
+            .then(function (response) {
+                console.log(response)
+                window.location.reload()
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
     }
 }
 
