@@ -1,0 +1,11 @@
+version: "3.2"
+services:
+  sql-server-db:
+    container_name: sql_server2022
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Insecurepassword123@"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express
