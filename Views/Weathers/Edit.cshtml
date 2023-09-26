@@ -29,21 +29,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-<script>
-    window.onload = (event) => {
-        const params = new URLSearchParams(window.location.search)
-        const id = params.get('id')
-        
-        const response = axios.get("Fetch?id=" + id).then(function (response) {
-            console.log(response.data)
-            document.getElementById("status").value = response.data.status
-            document.getElementById("message").value = response.data.message
-        }).catch(function (error) {
-            console.log(error)
-        })
-    }
-</script>
-
+<script src="~/js/edit_weather_onload.js"></script>
 <script src="~/js/weather.js"></script>
 
 @section Scripts {
