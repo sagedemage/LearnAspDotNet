@@ -76,8 +76,8 @@ namespace LearnAspDotNet.Controllers
         }
 
         [HttpGet]
-        [Route("Weathers/Fetch/{id?}")]
-        public async Task<IActionResult> Fetch(int? id)
+        [Route("Weathers/Fetch")]
+        public async Task<IActionResult> Fetch([FromQuery(Name = "id")] int? id)
         {
             if (id == null || _context.Weather == null)
             {
@@ -99,8 +99,8 @@ namespace LearnAspDotNet.Controllers
 
         // GET: Weathers/Edit/5
         [HttpGet]
-        [Route("Weathers/Edit/{id?}")]
-        public async Task<IActionResult> Edit(int? id)
+        [Route("Weathers/Edit")]
+        public async Task<IActionResult> Edit([FromQuery(Name = "id")] int? id)
         {
             if (id == null || _context.Weather == null)
             {
@@ -148,8 +148,8 @@ namespace LearnAspDotNet.Controllers
         }
 
         // GET: Weathers/Delete/5
-        [Route("Weathers/Delete/{id?}")]
-        public async Task<IActionResult> Delete(int? id)
+        [Route("Weathers/Delete")]
+        public async Task<IActionResult> Delete([FromQuery(Name = "id")] int? id)
         {
             if (id == null || _context.Weather == null)
             {
@@ -168,8 +168,8 @@ namespace LearnAspDotNet.Controllers
 
         // POST: Weathers/Delete/5
         [HttpDelete]
-        [Route("Weathers/Delete/{id?}")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [Route("Weathers/Delete")]
+        public async Task<IActionResult> DeleteConfirmed([FromQuery(Name = "id")] int? id)
         {
             if (_context.Weather == null)
             {
