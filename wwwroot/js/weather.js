@@ -1,4 +1,5 @@
 async function deleteWeather(id) {
+    // View: /Weathers
     const delete_weather = confirm("Do you want to delete this weather entry?")
     if (delete_weather) {
         axios.delete("Weathers/Delete?id=" + id)
@@ -13,7 +14,7 @@ async function deleteWeather(id) {
 }
 
 async function createWeather() {
-    // View: Weathers/Create
+    // View: /Weathers/Create
     const status = document.getElementById("status").value
     const message = document.getElementById("message").value
 
@@ -32,14 +33,8 @@ async function createWeather() {
     }
 }
 
-async function fetchWeather(id) {
-    const response = await axios.get("Weathers/Fetch?id=" + id)
-
-    return response.data
-}
-
 function updateWeather() {
-    // View: Weathers/Edit
+    // View: /Weathers/Edit
     const params = new URLSearchParams(window.location.search)
     const id = params.get('id')
     console.log(id)
