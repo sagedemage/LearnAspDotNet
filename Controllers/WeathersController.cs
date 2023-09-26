@@ -9,6 +9,8 @@ using LearnAspDotNet.Data;
 using LearnAspDotNet.Models;
 using System.Diagnostics;
 using System.Text.Json.Nodes;
+using System.Web;
+using System.Collections.Specialized;
 
 namespace LearnAspDotNet.Controllers
 {
@@ -61,9 +63,9 @@ namespace LearnAspDotNet.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Weathers/Create")]
+        [Route("Weathers/Create1")]
         [Consumes("application/json")]
-        public async Task<IActionResult> Create([FromBody] Weather weather)
+        public async Task<IActionResult> Create1([FromBody] Weather weather)
         {
             if (ModelState.IsValid)
             {
@@ -73,6 +75,31 @@ namespace LearnAspDotNet.Controllers
                 return new JsonResult(body);
             }
             return View(weather);
+        }
+
+        // application/x-www-form-urlencoded
+        [HttpPost]
+        [Route("Weathers/Create")]
+        [Consumes("application/x-www-form-urlencoded")]
+        public async Task<IActionResult> CreateForm()
+        {
+            IFormCollection form = Request.Form;
+            string? status = form["status"];
+            string? message = form["message"];
+
+            if (status == null || message == null)
+            {
+                return NotFound();
+            }
+
+            Weather weather = new Weather();
+            weather.Status = status;
+            weather.Message = message;
+
+            _context.Add(weather);
+            await _context.SaveChangesAsync();
+            // ~/Views/SpecificView.cshtml
+            return View("~/Views/Weathers/Create.cshtml");
         }
 
         [HttpGet]
