@@ -31,7 +31,8 @@
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
             <td>
-                <button asp-action="Edit" onclick="updateWeather(@item.id)" asp-route-id="@item.id">Edit</button>
+                <!-- /Edit?id=1 -->
+                <a class="btn btn-primary" href="/Weathers/Edit?id=@item.id">Edit</a>
                 <button asp-action="Delete" onclick="deleteWeather(@item.id)" asp-route-id="@item.id">Delete</button>
             </td>
         </tr>
