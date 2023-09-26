@@ -16,9 +16,6 @@ async function createWeather() {
     const status = document.getElementById("status").value
     const message = document.getElementById("message").value
 
-    console.log(status)
-    console.log(message)
-
     if (status !== null && message !== null) {
         axios.post("Create", {
             "Status": status,
