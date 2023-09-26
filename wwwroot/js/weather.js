@@ -13,6 +13,7 @@ async function deleteWeather(id) {
 }
 
 async function createWeather() {
+    // View: Weathers/Create
     const status = document.getElementById("status").value
     const message = document.getElementById("message").value
 
@@ -38,6 +39,7 @@ async function fetchWeather(id) {
 }
 
 function updateWeather() {
+    // View: Weathers/Edit
     const params = new URLSearchParams(window.location.search)
     const id = params.get('id')
     console.log(id)
