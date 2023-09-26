@@ -13,16 +13,20 @@ async function deleteWeather(id) {
 }
 
 async function createWeather() {
-    let status = prompt("What is the status of the Weather?")
-    let message = prompt("Provide the message of the Weather.")
+    const status = document.getElementById("status").value
+    const message = document.getElementById("message").value
+
+    console.log(status)
+    console.log(message)
+
     if (status !== null && message !== null) {
-        axios.post("Weathers/Create", {
+        axios.post("Create", {
             "Status": status,
             "Message": message
         })
             .then(function (response) {
                 console.log(response)
-                window.location.reload()
+                window.location.href = "/Weathers"
             })
             .catch(function (error) {
                 console.log(error)
