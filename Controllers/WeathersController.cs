@@ -164,7 +164,7 @@ namespace LearnAspDotNet.Controllers
         public async Task<IActionResult> Update()
         {
             IFormCollection form = Request.Form;
-            int id = Int32.Parse(form["weather_id"].ToString());
+            int id = int.Parse(form["weather_id"].ToString());
             string? status = form["status"];
             string? message = form["message"];
 
