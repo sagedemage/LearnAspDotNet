@@ -98,8 +98,8 @@ namespace LearnAspDotNet.Controllers
 
             _context.Add(weather);
             await _context.SaveChangesAsync();
-            // ~/Views/SpecificView.cshtml
-            return View("~/Views/Weathers/Create.cshtml");
+
+            return Redirect("/Weathers");
         }
 
         [HttpGet]
