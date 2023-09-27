@@ -13,26 +13,6 @@ async function deleteWeather(id) {
     }
 }
 
-async function createWeather() {
-    // View: /Weathers/Create
-    const status = document.getElementById("status").value
-    const message = document.getElementById("message").value
-
-    if (status !== null && message !== null) {
-        axios.post("Create", {
-            "Status": status,
-            "Message": message
-        })
-            .then(function (response) {
-                console.log(response)
-                window.location.href = "/Weathers"
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
-    }
-}
-
 function updateWeather() {
     // View: /Weathers/Edit
     const params = new URLSearchParams(window.location.search)

@@ -63,22 +63,6 @@ namespace LearnAspDotNet.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Weathers/Create1")]
-        [Consumes("application/json")]
-        public async Task<IActionResult> Create1([FromBody] Weather weather)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(weather);
-                await _context.SaveChangesAsync();
-                var body = new { status = "Sucess", msg = "Created weather entry!" };
-                return new JsonResult(body);
-            }
-            return View(weather);
-        }
-
-        // application/x-www-form-urlencoded
-        [HttpPost]
         [Route("Weathers/Create")]
         [Consumes("application/x-www-form-urlencoded")]
         public async Task<IActionResult> CreateForm()
