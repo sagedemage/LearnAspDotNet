@@ -86,6 +86,7 @@ namespace LearnAspDotNet.Controllers
             return Redirect("/Weathers");
         }
 
+        // GET: Weathers/Fetch
         [HttpGet]
         [Route("Weathers/Fetch")]
         public async Task<IActionResult> Fetch([FromQuery(Name = "id")] int? id)
