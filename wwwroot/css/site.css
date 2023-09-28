@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.navbar {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
