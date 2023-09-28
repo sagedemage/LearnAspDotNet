@@ -130,9 +130,9 @@ namespace LearnAspDotNet.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPatch]
-        [Route("Weathers/Update1")]
+        [Route("Weathers/Update")]
         [Consumes("application/json")]
-        public async Task<IActionResult> Update1([FromBody] Weather weather)
+        public async Task<IActionResult> Update([FromBody] Weather weather)
         {
             if (ModelState.IsValid)
             {
@@ -156,45 +156,6 @@ namespace LearnAspDotNet.Controllers
                 return new JsonResult(body);
             }
             return View(weather);
-        }
-
-        [HttpPost]
-        [Route("Weathers/Update")]
-        [Consumes("application/x-www-form-urlencoded")]
-        public async Task<IActionResult> Update()
-        {
-            IFormCollection form = Request.Form;
-            int id = int.Parse(form["weather_id"].ToString());
-            string? status = form["status"];
-            string? message = form["message"];
-
-            if (status == null || message == null)
-            {
-                return NotFound();
-            }
-
-            Weather weather = new Weather();
-            weather.id = id;
-            weather.Status = status;
-            weather.Message = message;
-
-            try
-            {
-                _context.Update(weather);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!WeatherExists(weather.id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return Redirect("/Weathers");
         }
 
         // GET: Weathers/Delete/5
