@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Text.Json.Nodes;
 using System.Web;
 using System.Collections.Specialized;
+using Microsoft.CodeAnalysis.Differencing;
 
 namespace LearnAspDotNet.Controllers
 {
@@ -86,7 +87,7 @@ namespace LearnAspDotNet.Controllers
             return Redirect("/Weathers");
         }
 
-        // GET: Weathers/Fetch
+        // GET: Weathers/Fetch?id={id}
         [HttpGet]
         [Route("Weathers/Fetch")]
         public async Task<IActionResult> Fetch([FromQuery(Name = "id")] int? id)
@@ -109,7 +110,7 @@ namespace LearnAspDotNet.Controllers
             return new JsonResult(weather);
         }
 
-        // GET: Weathers/Edit/5
+        // GET: Weathers/Edit?id={id}
         [HttpGet]
         [Route("Weathers/Edit")]
         public async Task<IActionResult> Edit([FromQuery(Name = "id")] int? id)
@@ -127,7 +128,7 @@ namespace LearnAspDotNet.Controllers
             return View(weather);
         }
 
-        // PATCH: Weathers/Edit/5
+        // PATCH: Weathers/Update
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPatch]
@@ -159,7 +160,7 @@ namespace LearnAspDotNet.Controllers
             return View(weather);
         }
 
-        // GET: Weathers/Delete/5
+        // GET: Weathers/Delete?id={id}
         [Route("Weathers/Delete")]
         public async Task<IActionResult> Delete([FromQuery(Name = "id")] int? id)
         {
@@ -178,7 +179,7 @@ namespace LearnAspDotNet.Controllers
             return View(weather);
         }
 
-        // POST: Weathers/Delete/5
+        // DELETE: Weathers/Delete?id={id}
         [HttpDelete]
         [Route("Weathers/Delete")]
         public async Task<IActionResult> DeleteConfirmed([FromQuery(Name = "id")] int? id)
